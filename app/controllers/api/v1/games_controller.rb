@@ -11,6 +11,18 @@ class Api::V1::GamesController < ApplicationController
 
   def create
     @game = Game.create(game_params)
+    render json: @game
+  end
+
+  def show
+    @game = Game.find_by(id: game_params[:id])
+    render json: @game
+  end
+
+  def update
+    @game = Game.find_by(id: game_params[:id])
+    @game.update(game_params)
+    render json: @game
   end
 
   def destroy
@@ -21,7 +33,7 @@ class Api::V1::GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:image, :city, :address, :date, :time, :price)
+    params.permit(:id, :sport, :city, :address, :date, :price, :contact, :confirmed)
   end
 
 end
