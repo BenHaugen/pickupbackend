@@ -15,7 +15,15 @@ ActiveRecord::Schema.define(version: 2019_04_23_195134) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "games", force: :cascade do |t|
+  create_table "confirmations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "organized_game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "organized_games", force: :cascade do |t|
+    t.integer "user_id"
     t.string "sport"
     t.string "city"
     t.string "address"
@@ -27,20 +35,9 @@ ActiveRecord::Schema.define(version: 2019_04_23_195134) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_games", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "game_id"
-    t.boolean "organizer", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.string "url"
-    t.string "main_sport"
-    t.string "availability"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

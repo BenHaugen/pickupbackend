@@ -1,7 +1,9 @@
 class User < ApplicationRecord
+  has_many :confirmations
+  has_many :organized_games
 
-
-  has_many :user_games
-  has_many :games, through: :user_games
+  validates :name, presence: true
+  validates :name, uniqueness: true
+  validates :password, presence: true
 
 end

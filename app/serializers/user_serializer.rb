@@ -1,7 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email, :url, :main_sport, :availability
+  attributes :id, :name, :password
 
-  has_many :user_games
-  has_many :games, through: :user_games
+  has_many :organized_games
+  has_many :confirmations
 
 end

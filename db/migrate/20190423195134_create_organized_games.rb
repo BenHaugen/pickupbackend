@@ -1,6 +1,7 @@
-class CreateGames < ActiveRecord::Migration[5.2]
+class CreateOrganizedGames < ActiveRecord::Migration[5.2]
   def change
-    create_table :games do |t|
+    create_table :organized_games do |t|
+      t.integer :user_id
       t.string :sport
       t.string :city
       t.string :address
