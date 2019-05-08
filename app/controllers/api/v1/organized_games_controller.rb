@@ -27,7 +27,11 @@ class Api::V1::OrganizedGamesController < ApplicationController
 
   def destroy
     @organized_game = OrganizedGame.find(params[:id])
+    @organized_game.confirmations.each do |c|
+      c.destroy
+    end
     @organized_game.destroy
+
   end
 
   private
